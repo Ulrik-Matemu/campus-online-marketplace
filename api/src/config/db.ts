@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const connectDB = async (): Promise<void> => {
-    const mongoURI = process.env.MONGO_URI || 'mongodb://admin:password@mongo:27017/com_db?authSource=admin';
+    const mongoURI = process.env.MONGO_URI || 'mongodb://sample:pass098@mongo:27017/com_db?authSource=sample';
 
     try {
         const conn = await mongoose.connect(mongoURI);
