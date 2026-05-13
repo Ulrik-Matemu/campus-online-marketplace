@@ -1,0 +1,32 @@
+services:
+  app:
+    build: .
+    volumes:
+    - .:/usr/src/app
+    - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    env_file: .env
+    depends_on:
+      - mongo
+    networks:
+      - mern-network
+
+  mongo:
+    image: mongo:4.4.18
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - mern-network
+
+networks:
+  mern-network:
+    driver: bridge
+
+volumes:
+  mongo-data:

@@ -1,0 +1,23 @@
+# 1. Dependency Management
+# Never commit node_modules; they are easily rebuilt from package.json
+node_modules/
+
+# 2. Build Output
+# Ignore the compiled code, as it is generated from your source
+dist/
+
+# 3. Environment Secrets (CRITICAL)
+# Never commit your .env file as it contains passwords and API keys
+.env
+
+# 4. Logs
+# Ignore log files generated during crashes or debugging
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# 5. OS Generated Files
+# Ignore system-specific files that don't belong in the project
+.DS_Store
+Thumbs.db
