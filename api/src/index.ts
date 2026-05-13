@@ -3,6 +3,8 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 import helmet from 'helmet';
 import connectDB from './config/db';
+import authRoutes from './routes/authRoutes';
+import productRoutes from './routes/productRoutes';
 
 dotenv.config();
 
@@ -19,6 +21,10 @@ connectDB();
 app.get('/api/v1/health', (req: Request, res: Response) => {
     res.json({ status: "UP", timestamp: new Date().toISOString() });
 });
+
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/products', productRoutes);
+
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     console.error(`[Error]: ${err.message}`);
